@@ -1,0 +1,114 @@
+@model Project_Group3.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+
+<a asp-controller="User" asp-action="Login" class="btn btn-register mr-5" style="width: 10%;">Login</a>
+<div class="bg-login d-flex justify-content-center align-items-center vh-100">
+    <div class="card rounded-lg shadow ml-10" style="width: 900px; margin-left: 10rem;">
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <div class="card-body p-0">
+                    <div class="register-container d-flex justify-content-center align-items-center">
+                        <img src="~/img/avatars/birdEdu.png" alt="Avatar" class="avatar-image" style="width: 80px;">
+                        <h2 class="card-title text-center">REGISTER FOR INSTRUCTOR</h2>
+                    </div>
+                    <form asp-action="InstructorRegister" class="ml-5 mt-3 mb-3">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="mb-1 col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="FirstName" class="text-theme font-weight-bold"></label>
+                                        <input asp-for="FirstName" class="form-control" style="width: 80%;" />
+                                    </div>
+                                </div>
+                                <div class="mb-1 col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="LastName" class="text-theme font-weight-bold"></label>
+                                        <input asp-for="LastName" class="form-control" style="width: 80%;" />
+                                    </div>
+                                </div>
+                                <div class="mb-1 col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Gender" class="text-theme font-weight-bold"></label>
+                                        <select asp-for="Gender" class="form-control" style="width: 80%;" />
+                                        <option value="">Please select...</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Others">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-1 col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Email" class="text-theme font-weight-bold"></label>
+                                        <input asp-for="Email" class="form-control" style="width: 80%;" />
+                                    </div>
+                                </div>
+                                <div class="mb-1 col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="PhoneNumber" class="text-theme font-weight-bold"></label>
+                                        <input asp-for="PhoneNumber" class="form-control" style="width: 80%;" />
+                                    </div>
+                                </div>
+                                <div class="mb-1 col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Birthday" class="text-theme font-weight-bold"></label>
+                                        <input asp-for="Birthday" type="date" class="form-control" style="width: 80%;" />
+                                    </div>
+                                </div>
+                                <div class="mb-1 col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Country" class="text-theme font-weight-bold"></label>
+                                        <select asp-for="Country" class="form-control" style="width: 80%;" />
+                                        <option value="">Please select...</option>
+                                        <option value="Vietnam">Vietnam</option>
+                                        <option value="Japan">Japan</option>
+                                        <option value="America">America</option>
+                                        <option value="England">England</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-1 col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Username" class="text-theme font-weight-bold"></label>
+                                        <input asp-for="Username" class="form-control" style="width: 80%;" />
+                                        <span asp-validation-for="Username" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="mb-1 col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Password" class="text-theme font-weight-bold"></label>
+                                        <input asp-for="Password" class="form-control" style="width: 80%;" />
+                                        <span asp-validation-for="Username" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="mb-1 col-md-6">
+                                    <div id="instructorInput" class="form-group">
+                                        <label asp-for="Introduce" class="text-theme font-weight-bold"></label>
+                                        <!-- Thay thế input bằng textarea -->
+                                        <textarea asp-for="Introduce" class="form-control" style="width: 80%;"></textarea>
+                                        <!-- Sửa lại thuộc tính asp-validation-for để áp dụng cho trường Introduce -->
+                                        <span asp-validation-for="Introduce" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <h5 class="text-danger">@ViewBag.err</h5>
+                            </div>
+                        </div>
+                        
+                        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mr-3 float-right mb-4">Cancel</a>
+                        <button type="submit" class="btn btn-success mr-3 float-right mb-4">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

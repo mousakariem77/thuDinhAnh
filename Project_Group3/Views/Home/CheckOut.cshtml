@@ -1,0 +1,79 @@
+@model WebLibrary.Models.Learner;
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+
+<section class="section-py bg-body first-section-pt mt-5">
+    <div class="container">
+        <div class="card px-3">
+            <div class="row">
+              <div class="col-lg-7 card-body border-end">
+                <h4 class="mb-2">Thanh toán</h4>
+                <p class="mb-0">Đây là thông tin của bạn và khóa học mà bạn mua</p>
+                    <h4 class="mt-2 mb-4 text-danger">Thông tin cá nhân</h4>
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label" for="billings-email">Họ và tên:</label>
+                                <input id="billings-email" class="form-control" value="@Model.FirstName @Model.LastName">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="billings-password">Id</label>
+                                <input id="billings-password" class="form-control" value="@Model.LearnerId">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="billings-zip">Billing Zip / Postal Code</label>
+                                <input type="text" id="billings-zip" class="form-control billings-zip-code" placeholder="Zip / Postal Code">
+                            </div>
+                        </div>
+                    </form>
+                    <div id="form-credit-card">
+                        <h4 class="mt-4 pt-2">Thông tin khóa học</h4>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="billings-card-name">Name</label>
+                                    <input type="text" id="billings-card-name" class="form-control" placeholder="John Doe">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="billings-card-name">Name</label>
+                                    <input type="text" id="billings-card-name" class="form-control" placeholder="John Doe">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label" for="billings-card-date">EXP. Date</label>
+                                    <input type="text" id="billings-card-date" class="form-control billing-expiry-date-mask" placeholder="MM/YY">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label" for="billings-card-cvv">CVV</label>
+                                    <input type="text" id="billings-card-cvv" class="form-control billing-cvv-mask" maxlength="3" placeholder="965">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5 card-body">
+                    <h4 class="mb-2">Thông tin khóa họ</h4>
+                    @* <p class="pb-2 mb-0">It can help you manage and service orders before,<br> during and after fulfilment.</p> *@
+                    <div class="bg-lighter p-4 rounded mt-4">
+                        <p>Gía</p>
+                        <div class="d-flex align-items-center">
+                            <h1 class="text-heading display-3">$59.99</h1>
+                        </div>
+                    </div>
+                <div>
+                    <div class="d-grid mt-3">
+                        <button class="btn btn-success">
+                        <span class="me-2">Proceed with Payment</span>
+                        <i class="bx bx-right-arrow-alt scaleX-n1-rtl"></i>
+                        </button>
+                    </div>
+                    <p class="mt-4 pt-2">By continuing, you accept to our Terms of Services and Privacy Policy. Please note that payments are non-refundable.</p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>

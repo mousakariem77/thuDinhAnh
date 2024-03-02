@@ -1,0 +1,88 @@
+@model WebLibrary.Models.Instructor;
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+
+<div class="container-fluid mt-2 mb-3 p-0">
+    <div class="card mb-4 bg-theme">
+        <form asp-action="Edit" class="ml-5 mt-3 mb-3" enctype="multipart/form-data">
+            <div class="container-fluid">
+                <div class="d-flex align-items-start align-items-sm-center">
+                    <div class="avatar-user mr-2 mb-3">
+                        <img class="avatar-initial bg-label-warning" src="~/img/1.png">
+                    </div>
+                    <div class="form-group mt-5 ml-3">
+                        <label asp-for="InstructorId" class="text-theme font-weight-bold"></label>
+                        <input asp-for="InstructorId" class="form-control" style="width: 50%;" disabled/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="text-theme font-weight-bold"></label>
+                            <input asp-for="FirstName" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="LastName" class="text-theme font-weight-bold"></label>
+                            <input asp-for="LastName" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Gender" class="text-theme font-weight-bold"></label>
+                            <input asp-for="Gender" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Country" class="text-theme font-weight-bold"></label>
+                            <input asp-for="Country" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Email" class="text-theme font-weight-bold"></label>
+                            <input asp-for="Email" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="text-theme font-weight-bold"></label>
+                            <input asp-for="PhoneNumber" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Birthday" class="text-theme font-weight-bold"></label>
+                            <input value="@Model.Birthday.Value.ToShortDateString()" asp-format="{0:dd-MM-yyyy}" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="RegistrationDate" class="text-theme font-weight-bold"></label>
+                            <input value="@Model.RegistrationDate.Value.ToShortDateString()" asp-format="{0:dd-MM-yyyy}" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Status" class="text-theme font-weight-bold"></label>
+                            <input asp-for="Status" class="form-control" style="width: 80%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mr-3">Save</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+}

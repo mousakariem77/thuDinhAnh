@@ -1,0 +1,117 @@
+@model Tuple<List<WebLibrary.Models.Course>, List<WebLibrary.Models.Category>, 
+    List<WebLibrary.Models.Instruct>, List<WebLibrary.Models.Instructor>>;
+@{
+    ViewData["Title"] = "Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+
+@{
+    String iconClass = "";
+    if(ViewBag.IconClass == "bxs-down-arrow")
+    {
+        iconClass = "bxs-up-arrow";
+    }else{
+        iconClass = "bxs-down-arrow";
+    }
+}
+
+<div class="card bg-theme p-0 mt-2 mb-5" >
+    <div class="container no-footer mt-5 mb-3 p-0">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="container-fluid">
+                    <form class="table-search d-flex" action="/course/index">
+                        <input class="form-control" value="@ViewBag.search" type="search" name="search" placeholder="Search">
+                        <button class="btn btn-primary btn-outline-primary ml-2" type="submit">
+                            <i class='bx bx-search-alt-2'></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-3">
+                <a class="btn btn-success" asp-action="Create">Add new</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container p-0 mt-3">
+        <table class="datatables-basic table mb-5">
+            <thead>
+                <tr>
+                    <th width="10"><input type="checkbox" id="all" class="checkbox-item"></th>
+                    <th width="250" class="text-theme">Course Name</th>
+                    <th width="170" class="text-theme">Category</th>
+                    <th width="120" class="text-theme">Instructor</th>
+                    <th width="90" class="text-theme">Price</th>
+                    <th width="50" class="text-theme">Status</th>
+                    <th width="70" class="text-theme">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var course in Model.Item1){
+                    <tr class="">
+                        <td class="  dt-checkboxes-cell">
+                            <input type="checkbox">
+                        </td>
+                        <td class="text-theme">@course.CourseName</td>
+                        @foreach(var category in Model.Item2){
+                            if(category.CategoryId == course.CategoryId){
+                                <td class="text-theme">@category.CategoryName</td>
+                            }
+                        }
+                        @foreach(var instructor in Model.Item4){
+                            foreach(var instruct in Model.Item3){
+                                if(course.CourseId == instruct.CourseId && instructor.InstructorId == instruct.InstructorId){
+                                    <td class="text-theme">@instructor.FirstName @instructor.LastName</td>
+                                }
+                            }
+                        }
+                        <td class="text-theme">@course.Price</td>
+                        <td>
+                            <span class="badge bg-label-success text-theme">@course.Status</span>
+                        </td>
+                        <td class="text-theme">
+                            <div class="action-icon d-flex text-center">
+                                <a class="btn btn-warning mr-2" asp-action="Edit" asp-route-id="@course.CourseId" title="Edit">
+                                    <i class='bx bxs-edit'></i>
+                                </a>
+                                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@course.CourseId" title="Delete">
+                                    <i class='bx bxs-trash-alt'></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                    <tr>
+                        <td colspan="7">
+                            <div class="mt-3 text-theme">
+                                 Showing 1 to @ViewBag.PageSize of @ViewBag.Quantity entries
+                            </div>
+                            <ul class="pagination ml-5 justify-content-end" style="margin-top: -10px;">
+                                @if (ViewBag.CurrentPage > 1)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="/course/index?page=@(ViewBag.CurrentPage - 1)">Previous</a>
+                                    </li>
+                                }
+                                @for(int i = 1; i <= ViewBag.TotalPages; i++)
+                                {
+                                    <li class="page-item ">
+                                        <a class="page-link @(ViewBag.CurrentPage == i ? "bg-primary text-white" : "")" href="/course/index?page=@i">@i</a>
+                                    </li>
+                                }
+                                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="/course/index?page=@(ViewBag.CurrentPage + 1)">Next</a>
+                                    </li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

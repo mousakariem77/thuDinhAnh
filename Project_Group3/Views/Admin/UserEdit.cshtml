@@ -1,0 +1,213 @@
+@model Tuple<WebLibrary.Models.Instructor, WebLibrary.Models.Learner>;
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+
+@{
+    string role = ViewBag.Role;
+}
+
+<div class="container-fluid mt-2 mb-3 p-0">
+    <div class="card mb-4 bg-theme">
+        <form asp-action="UserEdit" asp-method="post" class="ml-5 mt-3 mb-3" enctype="multipart/form-data">
+            <div class="card-body d-flex" style="justify-content: space-between;">
+                <div class="d-flex align-items-start align-items-sm-center gap-4 ml-5">
+                    <div class="avatar-user mr-2 mt-5">
+                        <img class="avatar-initial rounded-circle bg-label-warning" src="~/img/1.png">
+                    </div>
+                    <div class="id-text form-group ml-2">
+                        @{
+                            if(role.Equals("instructor")){
+                                <label class="text-theme font-weight-bold">InstructorId</label>
+                                <input value="@Model.Item1.InstructorId" class="form-control" style="width: 80%;" disabled/>
+                            }else if(role.Equals("learner")){
+                                <label class="text-theme font-weight-bold">LearnerId</label>
+                                <input value="@Model.Item2.LearnerId" class="form-control" style="width: 80%;" disabled/>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid ml-5">
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            @{
+                                if(role.Equals("instructor")){
+                                    <label class="text-theme font-weight-bold">FirstName</label>
+                                    <input value="@Model.Item1.FirstName" class="form-control" style="width: 80%;" disabled/>
+                                }else if(role.Equals("learner")){
+                                    <label class="text-theme font-weight-bold">FirstName</label>
+                                    <input value="@Model.Item2.FirstName" class="form-control" style="width: 80%;" disabled/>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                                @{
+                                    if(role.Equals("instructor")){
+                                        <label class="text-theme font-weight-bold">LastName</label>
+                                        <input value="@Model.Item1.LastName" class="form-control" style="width: 80%;" disabled/>
+                                    }else if(role.Equals("learner")){
+                                        <label class="text-theme font-weight-bold">LastName</label>
+                                        <input value="@Model.Item2.LastName" class="form-control" style="width: 80%;" disabled/>
+                                    }
+                                }
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            @{
+                                if(role.Equals("instructor")){
+                                    <label class="text-theme font-weight-bold">Gender</label>
+                                    <input value="@Model.Item1.Gender" class="form-control" style="width: 80%;" disabled/>
+                                }else if(role.Equals("learner")){
+                                    <label class="text-theme font-weight-bold">Gender</label>
+                                    <input value="@Model.Item2.Gender" class="form-control" style="width: 80%;" disabled/>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            @{
+                                if(role.Equals("instructor")){
+                                    <label class="text-theme font-weight-bold">Country</label>
+                                    <input value="@Model.Item1.Country" class="form-control" style="width: 80%;" disabled/>
+                                }else if(role.Equals("learner")){
+                                    <label class="text-theme font-weight-bold">Country</label>
+                                    <input value="@Model.Item2.Country" class="form-control" style="width: 80%;" disabled/>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            @{
+                                if(role.Equals("instructor")){
+                                    <label class="text-theme font-weight-bold">Email</label>
+                                    <input value="@Model.Item1.Email" class="form-control" style="width: 80%;" disabled/>
+                                }else if(role.Equals("learner")){
+                                    <label class="text-theme font-weight-bold">Email</label>
+                                    <input value="@Model.Item2.Email" class="form-control" style="width: 80%;" disabled/>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            @{
+                                if(role.Equals("instructor")){
+                                    <label class="text-theme font-weight-bold">PhoneNumber</label>
+                                    <input value="@Model.Item1.PhoneNumber" class="form-control" style="width: 80%;" disabled/>
+                                }else if(role.Equals("learner")){
+                                    <label class="text-theme font-weight-bold">PhoneNumber</label>
+                                    <input value="@Model.Item2.PhoneNumber" class="form-control" style="width: 80%;" disabled/>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            @{
+                                if(role.Equals("instructor")){
+                                    <label class="text-theme font-weight-bold">Birthday</label>
+                                    <input value="@Model.Item1.Birthday.Value.ToShortDateString()" asp-format="{0:dd-MM-yyyy}" class="form-control" style="width: 80%;" disabled/>
+                                }else if(role.Equals("learner")){
+                                    <label class="text-theme font-weight-bold">Birthday</label>
+                                    <input value="@Model.Item2.Birthday.Value.ToShortDateString()" asp-format="{0:dd-MM-yyyy}" class="form-control" style="width: 80%;" disabled/>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            @{
+                                if(role.Equals("instructor")){
+                                    <label class="text-theme font-weight-bold">Registration Date</label>
+                                    <input value="@Model.Item1.RegistrationDate.Value.ToShortDateString()" asp-format="{0:dd-MM-yyyy}" class="form-control" style="width: 80%;" disabled/>
+                                }else if(role.Equals("learner")){
+                                    <label class="text-theme font-weight-bold">Registration Date</label>
+                                    <input value="@Model.Item2.RegistrationDate.Value.ToShortDateString()" asp-format="{0:dd-MM-yyyy}" class="form-control" style="width: 80%;" disabled/>
+                                }
+                            }
+                        </div>
+                    </div>
+                    @{
+                        if(role.Equals("instructor")){
+                            <div class="mb-3 col-md-6">
+                                <div class="form-group">
+                                    <label class="text-theme font-weight-bold">Introduce</label>
+                                    <textarea class="form-control" style="width: 80%;" rows="4" disabled>@Model.Item1.Introduce</textarea>
+                                </div>
+                            </div>
+                        }
+                    }
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            @{
+
+                                if (role.Equals("instructor"))
+                                {
+                                    <label class="text-theme font-weight-bold">Status</label>
+                                    <select class="form-control" style="width: 80%;">
+                                        @if(Model.Item1.Status.Equals("Active")){
+                                            <option value="Active" selected>Active</option>
+                                            <option value="Delete">Delete</option>
+                                            <option value="Block">Block</option>
+                                        }else if(Model.Item1.Status.Equals("Delete")){
+                                            <option value="Active">Active</option>
+                                            <option value="Delete" selected>Delete</option>
+                                            <option value="Block">Block</option>
+                                        }else if(Model.Item1.Status.Equals("Block")){
+                                            <option value="Active">Active</option>
+                                            <option value="Delete">Delete</option>
+                                            <option value="Block" selected>Block</option>
+                                        }
+                                    </select>
+                                }
+                                else if (role.Equals("learner"))
+                                {
+                                    <label class="text-theme font-weight-bold">Status</label>
+                                    <select class="form-control" style="width: 80%;">
+                                        @if(Model.Item2.Status.Equals("Active")){
+                                            <option value="Active" selected>Active</option>
+                                            <option value="Delete">Delete</option>
+                                            <option value="Block">Block</option>
+                                        }else if(Model.Item2.Status.Equals("Delete")){
+                                            <option value="Active">Active</option>
+                                            <option value="Delete" selected>Delete</option>
+                                            <option value="Block">Block</option>
+                                        }else if(Model.Item2.Status.Equals("Block")){
+                                            <option value="Active">Active</option>
+                                            <option value="Delete">Delete</option>
+                                            <option value="Block" selected>Block</option>
+                                        }
+                                    </select>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mr-3">Save</button>
+            @{
+                @if (role.Equals("instructor"))
+                {
+                    <input type="hidden" name="id" value="@Model.Item1.InstructorId" />
+                    <a asp-action="Instructor" class="btn btn-secondary ml-3 mt-3 mb-5" style="width: 8rem;">Back</a>
+                }
+                else if (role.Equals("learner"))
+                {
+                    <input type="hidden" name="id" value="@Model.Item2.LearnerId" />
+                    <a asp-action="Learner" class="btn btn-secondary ml-3 mt-3 mb-5" style="width: 8rem;">Back</a>
+                }
+            }
+        </form>
+    </div>
+</div>
+

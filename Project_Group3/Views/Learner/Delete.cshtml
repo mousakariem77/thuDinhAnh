@@ -1,0 +1,117 @@
+@model WebLibrary.Models.Learner;
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container-fluid mt-2 mb-3 p-0">
+    <div class="card mb-4 bg-theme">
+        <div class="ml-5 mt-3 mb-3">
+            <div class="container-fluid">
+                <div class="d-flex align-items-start align-items-sm-center mb-4">
+                    <div class="avatar-user mr-2 mt-3">
+                        <img class="avatar-initial bg-label-warning" src="~/img/1.png">
+                    </div>
+                    <div class="form-group ml-3 mt-5">
+                        <label asp-for="LearnerId" class="text-theme font-weight-bold"></label>
+                        <input asp-for="LearnerId" class="form-control" style="width: 50%;" disabled/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="text-theme font-weight-bold"></label>
+                            <input asp-for="FirstName" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="LastName" class="text-theme font-weight-bold"></label>
+                            <input asp-for="LastName" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Gender" class="text-theme font-weight-bold"></label>
+                            <input asp-for="Gender" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Country" class="text-theme font-weight-bold"></label>
+                            <input asp-for="Country" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Email" class="text-theme font-weight-bold"></label>
+                            <input asp-for="Email" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="text-theme font-weight-bold"></label>
+                            <input asp-for="PhoneNumber" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Birthday" class="text-theme font-weight-bold"></label>
+                            <input value="@Model.Birthday.Value.ToShortDateString()" asp-format="{0:dd-MM-yyyy}" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="RegistrationDate" class="text-theme font-weight-bold"></label>
+                            <input value="@Model.RegistrationDate.Value.ToShortDateString()" asp-format="{0:dd-MM-yyyy}" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Status" class="text-theme font-weight-bold"></label>
+                            <input asp-for="Status" class="form-control" style="width: 80%;" disabled/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">Delete</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-theme">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title text-theme">Delete</h4>
+        <button type="button" class="btn-close bg-theme text-theme border-0" data-bs-dismiss="modal">x</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body text-theme">
+        Do you really want to delete this user account?
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <form asp-action="Delete" method="post">
+            <button type="submit" class="btn btn-success mr-3">Yes</button>
+        </form>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+}

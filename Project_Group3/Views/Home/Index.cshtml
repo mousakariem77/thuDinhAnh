@@ -1,0 +1,133 @@
+﻿@model Tuple<List<WebLibrary.Models.Category>, List<WebLibrary.Models.Instructor>>;
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+
+<div class="addvertising-course">
+    <!-- Category Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-3 pb-3">
+            <div class="text-center mb-5">
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Subjects</h5>
+                <h1>Explore Top Subjects</h1>
+            </div>
+            <div class="row">
+                @{
+                    int count = 1;
+                }
+                @foreach(var category in Model.Item1){
+                    <div class="course-container col-lg-3 col-md-6 mb-4">
+                        <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                            <a class="cat-overlay text-theme text-decoration-none" href="https://www.youtube.com/">
+                                <img class="img-fluid" src="~/img/elements/cat-@(count).jpg" alt="">
+                                <h5 class="text-theme font-weight-medium">@category.CategoryName</h5>
+                                <div class="d-flex justify-content-between align-items-end">
+                                    <span class="ml-auto">@category.CategoryId Courses</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    count = count+1;
+                }
+            </div>
+        </div>
+    </div>
+    <!-- Category Start -->
+
+    <!-- Team Start -->
+    <div class="container-fluid py-5">
+        <div class="container pb-3">
+            <div class="text-center mb-5">
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Teachers</h5>
+                <h1>Meet Our Teachers</h1>
+            </div>
+            <div class="row">
+                @{
+                    int countIns=6;
+                    foreach(var instructor in Model.Item2){
+                        <div class="col-md-6 col-lg-3 text-center team mb-4">
+                            <div class="team-item rounded overflow-hidden mb-2">
+                                <div class="team-img position-relative mt-4">
+                                    <img class="img-fluid img-equal-size" src="~/img/avatars/instructor/@(countIns).png" alt="">
+                                </div>
+                                <div class="text-them p-4">
+                                    <h5>@instructor.FirstName @instructor.LastName</h5>
+                                    <p class="m-0">Web Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                        countIns++;
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+    <!-- Registration Start -->
+    <div class="container-fluid bg-registration p-0 mt-4">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                @{
+                    var myCookieValue = Context.Request.Cookies["MyCookie"];
+                    if(myCookieValue == null){
+                        <div class="col-lg-7 mb-5 mb-lg-0">
+                            <div class="mb-4">
+                                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">WELCOME TO OUR COURSES
+                                </h5>
+                                <h1 class="text-white">30% Off For New Students</h1>
+                            </div>
+                            <p class="text-white">Take advantage of our special offer! New students can enjoy a 30% discount on
+                                any course they enroll in. Don't miss this opportunity to invest in your education at a
+                                discounted price.</p>
+                            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Why Choose Us?</h5>
+
+                            <ul class="list-inline text-white m-0">
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Experienced Instructors</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Comprehensive Curriculum</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Flexible Learning</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Interactive Learning Environment
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <div class=" border-0">
+                                <div class=" text-end">
+                                    <a asp-controller="User" asp-action="Register" class="btn btn-register">Sign Up Now</a>
+                                </div>
+                                <div class="card-body rounded-bottom">
+                                    <img class="img-fluid" src="~/img/avatars/birdEdu.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                    }else{
+                        <div class="col-lg-12 mb-12 mb-lg-0">
+                            <div class="mb-4">
+                                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">WELCOME TO OUR COURSES</h5>
+                                <h1 class="text-white">30% Off For New Students</h1>
+                            </div>
+                            <p class="text-white">Take advantage of our special offer! New students can enjoy a 30% discount on any course they enroll in. Don't miss this opportunity to invest in your education at a discounted price.</p>
+                            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Why Choose Us?</h5>
+                            <ul class="list-inline text-white m-0">
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Experienced Instructors</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Comprehensive Curriculum</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Flexible Learning</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Interactive Learning Environment</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>24/7 Access to Course Materials</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Engaging Learning Activities</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Supportive Online Community</li>
+                            </ul>
+                        </div>
+                    }
+                }
+                
+            </div>
+        </div>
+    </div>
+    <!-- Registration End -->
+</div>

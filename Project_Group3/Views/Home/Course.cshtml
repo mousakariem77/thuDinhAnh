@@ -1,0 +1,122 @@
+@model Tuple<List<WebLibrary.Models.Course>, List<WebLibrary.Models.Category>, 
+    List<WebLibrary.Models.Instruct>, List<WebLibrary.Models.Instructor>>;
+@{
+    ViewData["Title"] = "Course";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+
+<div class="container-fluid addvertising-course">
+    <!-- Welcome Start -->
+    <div class="container-fluid py-4 mt-3" style="background-color: rgb(12, 65, 93);">
+        <div class="container-fluid">
+            <h4 class="text-white ml-4 pt-4">Search for course names online.</h4>
+            <div class="row pb-5 ml-3">
+                <div class="col-sm-12 col-md-4 mt-3">
+                    <div class="d-flex text-theme">
+                        <input type="search" class="form-control mr-2" placeholder="Search...">
+                        <button class="btn btn-primary" type="button"><i class='bx bx-search-alt-2'></i></button>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mt-3">
+                    <select name="" class="form-select bg-white text-dark" aria-placeholder="Status">
+                        <option value="all">All</option>
+                        <option value="active">Enrolled</option>
+                        <option value="block">Unregistered</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Welcome End -->
+
+    <!-- Courses Start -->
+    <div class="container-fluid">
+        <div class="container py-5">
+            <div class="text-center mb-5 mt-5">
+                <h1>Our Popular Courses</h1>
+            </div>
+
+                @{
+                    foreach(var category in Model.Item2){
+                        int courseCount = 0;
+                        int categoryCount = 0;
+                        <div class="row">
+                            @{
+                                foreach(var course in Model.Item1){
+                                    foreach(var instructor in Model.Item4){
+                                        foreach(var instruct in Model.Item3){
+                                            if(course.CourseId == instruct.CourseId && instructor.InstructorId == instruct.InstructorId){
+                                                if(category.CategoryId == course.CategoryId){
+                                                    if(categoryCount == 0){
+                                                        <h3 class="col-lg-12 col-md-12 text-dark pt-2 mb-3">@category.CategoryName</h3>
+                                                        categoryCount = 1;
+                                                    }
+                                                    if(courseCount < 3){ 
+                                                        <div class="course-container col-lg-4 col-md-6 mb-4">
+                                                            <div class="rounded overflow-hidden mb-2">
+                                                                <a class="text-decoration-none" href="/Home/CourseDetail/@instruct.InstructId"
+                                                                title="@course.CourseName" href="">
+                                                                    <img class="img-fluid" src="~/img/avatars/course/course-4.jpg" alt="">
+                                                                    <div class="p-4" style="border: 1px solid #a7a7a7; background-color: #e3e3e3;">
+                                                                        <div class="d-flex justify-content-between mb-3 text-theme">
+                                                                            <small class="m-0"><i class="fa fa-users text-dark mr-2"></i>25 Students</small>
+                                                                            <small class="m-0"><i class="bx bxs-time text-primary mr-2"></i>@course.TotalTime</small>
+                                                                        </div>
+                                                                        <h5 class="course-name text-theme">@course.CourseName</h5>
+                                                                        <div class="border-top mt-4 pt-4">
+                                                                            <div class="d-flex justify-content-between text-theme">
+                                                                                <h6 class="m-0"><i class="bx bxs-star text-warning mr-2 mb-2"></i>4.5 <small>(250)</small>
+                                                                                </h6>
+                                                                                <h5 class="m-0">@(course.Price)đ</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        courseCount++;
+                                                    }else{
+                                                        <div class="course-container col-lg-4 col-md-6 mb-4 collapse" id="demo-@(category.CategoryName)">
+                                                            <div class="rounded overflow-hidden mb-2">
+                                                                <a class="text-decoration-none" title="@course.CourseName" href="">
+                                                                    <img class="img-fluid" src="~/img/avatars/course/course-4.jpg" alt="">
+                                                                    <div class="p-4" style="border: 1px solid #a7a7a7; background-color: #e3e3e3;">
+                                                                        <div class="d-flex justify-content-between mb-3 text-theme">
+                                                                            <small class="m-0"><i class="fa fa-users text-dark mr-2"></i>25 Students</small>
+                                                                            <small class="m-0"><i class="bx bxs-time text-primary mr-2"></i>@course.TotalTime</small>
+                                                                        </div>
+                                                                        <h5 class="course-name text-theme">@course.CourseName</h5>
+                                                                        <div class="border-top mt-4 pt-4">
+                                                                            <div class="d-flex justify-content-between text-theme">
+                                                                                <h6 class="m-0"><i class="bx bxs-star text-warning mr-2 mb-2"></i>4.5 <small>(250)</small>
+                                                                                </h6>
+                                                                                <h5 class="m-0">@(course.Price)đ</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        </div>
+                        @if(courseCount >= 3){
+                            <div class="more-course mb-4">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo-@(category.CategoryName)"
+                                onclick="toggleButtonText(this)">See more</button>
+                            </div>
+                        }
+                        
+                    }
+                }
+        </div>
+    </div>
+    <!-- Courses End -->
+</div>

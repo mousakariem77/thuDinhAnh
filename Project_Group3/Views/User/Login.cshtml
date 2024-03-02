@@ -1,0 +1,47 @@
+@model Project_Group3.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<div class="bg-login d-flex justify-content-center align-items-center vh-100">
+    <div class="card rounded-lg shadow" style="width: 600px;">
+        <div class="row">
+            <div class="container-login col-md-6 d-flex justify-content-center align-items-center" style="background-color: #112748;">
+                <a asp-controller="User" asp-action="Register" class="btn btn-register position-absolute mr-5">Sign up</a>
+                <img src="~/img/avatars/birdEdu.png" alt="Icon" class="icon-image" style="width: 80%;">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h2 class="card-title text-center">LOGIN</h2>
+                    <form asp-controller="User" asp-action="Login" method="post">
+                        <div class="mb-3">
+                            <label asp-for="EmailOrUsername" class="form-label">Username:</label>
+                            <input asp-for="EmailOrUsername" type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">Password:</label>
+                            <input asp-for="Password" type="password" class="form-control">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary p-2" style="width: 100%;">Login</button>
+                        <a href="#" class="btn btn-link float-right mb-3">Forgot Password</a>
+                    </form>
+                    @if (!string.IsNullOrEmpty(ViewBag.err))
+                    {
+                        <div class="alert alert-info mt-3" role="alert">
+                            @ViewBag.err
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }

@@ -1,0 +1,16 @@
+D:\Group03_Project\WebLibrary\bin\Debug\net5.0\WebLibrary.deps.json
+D:\Group03_Project\WebLibrary\bin\Debug\net5.0\WebLibrary.runtimeconfig.json
+D:\Group03_Project\WebLibrary\bin\Debug\net5.0\WebLibrary.runtimeconfig.dev.json
+D:\Group03_Project\WebLibrary\bin\Debug\net5.0\WebLibrary.dll
+D:\Group03_Project\WebLibrary\bin\Debug\net5.0\WebLibrary.pdb
+D:\Group03_Project\WebLibrary\obj\Debug\net5.0\WebLibrary.csproj.AssemblyReference.cache
+D:\Group03_Project\WebLibrary\obj\Debug\net5.0\WebLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\Group03_Project\WebLibrary\obj\Debug\net5.0\WebLibrary.AssemblyInfoInputs.cache
+D:\Group03_Project\WebLibrary\obj\Debug\net5.0\WebLibrary.AssemblyInfo.cs
+D:\Group03_Project\WebLibrary\obj\Debug\net5.0\WebLibrary.csproj.CoreCompileInputs.cache
+D:\Group03_Project\WebLibrary\obj\Debug\net5.0\WebLibrary.dll
+D:\Group03_Project\WebLibrary\obj\Debug\net5.0\refint\WebLibrary.dll
+D:\Group03_Project\WebLibrary\obj\Debug\net5.0\WebLibrary.pdb
+D:\Group03_Project\WebLibrary\obj\Debug\net5.0\WebLibrary.genruntimeconfig.cache
+D:\Group03_Project\WebLibrary\obj\Debug\net5.0\ref\WebLibrary.dll
+D:\Group03_Project\WebLibrary\obj\Debug\net5.0\WebLibrary.sourcelink.json

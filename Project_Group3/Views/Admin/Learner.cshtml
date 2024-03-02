@@ -1,0 +1,190 @@
+@model IEnumerable<WebLibrary.Models.Learner>
+@{
+    ViewData["Title"] = "Learner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+@{
+    String iconClass = "";
+    if(ViewBag.IconClass == "bxs-down-arrow")
+    {
+        iconClass = "bxs-up-arrow";
+    }else{
+        iconClass = "bxs-down-arrow";
+    }
+}
+
+@if (TempData["EditSuccess"] != null)
+{
+    <div id="editAlert" class="alert alert-@((bool)TempData["EditSuccess"] ? "success" : "danger") alert-dismissible fade show">
+        @((bool)TempData["EditSuccess"] ? "Learner edited successfully." : "Failed to edit learner.")
+        <div id="progressBar"></div>
+    </div>
+}
+
+@if (TempData["DeleteSuccess"] != null)
+{
+    <div id="deleteAlert" class="alert alert-@((bool)TempData["DeleteSuccess"] ? "success" : "danger") alert-dismissible fade show">
+        @((bool)TempData["DeleteSuccess"] ? "Learner deleted successfully." : "Failed to delete learner.")
+        <div id="progressBar"></div>
+    </div>
+}
+
+
+<div class="card bg-theme p-0 mt-2 mb-5" >
+    <div class="container no-footer mt-5 mb-3 p-0">
+        <div class="row">
+            <div class="col-sm-12 col-md-2">
+                <div class="dataTables_length d-flex text-theme">
+                    <label>Show</label>
+                    <select name="pageSize" class="form-select" style="border-radius: 8px;">
+                        <option value="7">7</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="75">75</option>
+                        <option value="100">100</option>
+                    </select> 
+                    <label>entries</label>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="dataTables_length d-flex text-theme">
+                    <label>Status</label>
+                    <select name="filter" class="form-select" style="border-radius: 8px;" 
+                        onchange="location.href = '/learner/index?filter=' + this.value;">
+                        <option value="">All countries</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="Italya">Italya</option>
+                        <option value="Thailan">Thailan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="container-fluid ml-5">
+                    <form class="table-search d-flex" action="/learner/index">
+                        <input class="form-control" value="@ViewBag.search" type="search" name="search" placeholder="Search">
+                        <button class="btn btn-primary btn-outline-primary ml-2" type="submit">
+                            <i class='bx bx-search-alt-2'></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-3 mt-3">
+                <a class="btn btn-success" asp-action="Create">Add new</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container p-0 mt-3">
+        <table class="datatables-basic table mb-5">
+            <thead>
+                <tr>
+                    <th width="10"><input type="checkbox" id="all" class="checkbox-item"></th>
+                    <th width="50" class="text-theme">Name</th>
+                    <th width="120" class="text-theme">Gender</th>
+                    <th width="120" class="text-theme">Country</th>
+                    <th width="150" class="text-theme">Registration</th>
+                    <th width="120" class="text-theme">Status</th>
+                    <th width="70" class="text-theme">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var learner in Model){
+                    <tr class="">
+                        <td class="  dt-checkboxes-cell">
+                            <input type="checkbox">
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-start align-items-center user-name">
+                                <div class="avatar-wrapper">
+                                    <div class="avatar mr-2">
+                                        <img class="avatar-initial rounded-circle bg-label-warning" src="~/img/1.png">
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <a href="/admin/userDetail/@learner.LearnerId?role=learner">
+                                        <span class="text-truncate text-theme">@learner.FirstName @learner.LastName</span><br>
+                                        <small class="text-truncate text-muted text-theme">@learner.Email</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-theme">@learner.Gender</td>
+                        <td class="text-theme">@learner.Country</td>
+                        <td class="text-theme">@learner.RegistrationDate.Value.ToShortDateString()</td>
+                        <td>
+                            <span class="badge bg-label-success text-theme">@learner.Status</span>
+                        </td>
+                        <td class="text-theme">
+                            <div class="action-icon d-flex text-center">
+                                <a class="btn btn-warning mr-2" href="/admin/userEdit/@learner.LearnerId?role=learner" title="Edit">
+                                    <i class='bx bxs-edit'></i>
+                                </a>
+                                 @if(!(learner.Status.Equals("Delete"))){
+                                    <a class="btn text-theme" style="background-color: rgb(169, 140, 140); cursor: pointer;" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                        <i class='bx bxs-trash-alt'></i>
+                                    </a>
+                                }else{
+                                    <a class="btn btn-danger" asp-action="DeleteLearner" asp-route-id="@learner.LearnerId" title="Delete">
+                                        <i class='bx bxs-trash-alt'></i>
+                                    </a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+                    <tr>
+                        <td colspan="7">
+                        <div class="mt-3 text-theme">
+                            Showing 1 to @ViewBag.PageSize of @ViewBag.Quantity entries
+                        </div>
+                        <ul class="pagination ml-5 justify-content-end" style="margin-top: -10px;">
+                            @if (ViewBag.CurrentPage > 1)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="/learner/index?page=@(ViewBag.CurrentPage - 1)">Previous</a>
+                                </li>
+                            }
+                            @for(int i = 1; i <= ViewBag.TotalPages; i++)
+                            {
+                                <li class="page-item ">
+                                    <a class="page-link @(ViewBag.CurrentPage == i ? "bg-primary text-white" : "")" href="/learner/index?page=@i">@i</a>
+                                </li>
+                            }
+                            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="/learner/index?page=@(ViewBag.CurrentPage + 1)">Next</a>
+                                </li>
+                            }
+                        </ul>
+                    </td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="deleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-theme">
+      <div class="modal-header">
+        <h3 class="text-danger modal-title">Error</h3>
+        <button type="button" class="btn-close bg-theme text-theme border-0" data-bs-dismiss="modal">x</button>
+      </div>
+      <div class="text-theme modal-body">
+        You can't not delete this account
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,435 @@
+@model Tuple<WebLibrary.Models.Course, WebLibrary.Models.Instructor, IEnumerable<WebLibrary.Models.Review>,
+            IEnumerable<WebLibrary.Models.Learner>, IEnumerable<WebLibrary.Models.Chapter>, IEnumerable<WebLibrary.Models.Lesson>>;
+@{
+    ViewData["Title"] = "Course Detail";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<link rel="stylesheet" href="/wwwroot/css/site.css" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+
+<!-- Welcome Start -->
+<div class="container-fluid mt-4 p-0" style="background-color: rgb(12, 65, 93);">
+    <div class="container">
+        <h4 class="text-white ml-4 pt-4">@Model.Item1.CourseName</h4>
+        <h6 class="m-0 text-white ml-4 ">
+            <label class="mb-2">
+                <i class="bx bxs-star text-warning mr-2"></i>
+                <i class="bx bxs-star text-warning mr-2"></i>
+                <i class="bx bxs-star text-warning mr-2"></i>
+                <i class="bx bxs-star text-warning mr-2"></i>
+                <i class="bx bxs-star mr-2"></i>
+            </label>
+            4<small>(250)</small>
+            </h6>
+        <div class="row pb-5 ml-3">
+            <div class="col-md-6 col-lg-6 mb-4">
+                <div class="instructor-item mb-2 mt-2">
+                    <div class="instructor-img">
+                        <img class="img-fluid rounded-circle" src="~/img/avatars/instructor/team-4.jpg" style=" width: 6rem;" alt="">
+                    </div>
+                    <label class="text-white"><b>Instructor: </b>@Model.Item2.FirstName @Model.Item2.LastName</label>
+                </div>
+                <div class="erroll-course">
+                    @{
+                        var myCookieValue = Context.Request.Cookies["MyCookie"];
+                         if(myCookieValue != null){
+                            <a class="btn btn-warning mr-2" href="/home/checkout/1" title="Edit">
+                                <button class="erroll-btn btn btn-warning" asp-for>
+                                    <h5>Enroll</h5>
+                                    <label>Starts March 1</label>
+                                </button>
+                                </a>
+                         }else{
+                            <a class="erroll-btn btn btn-warning" asp-controller="User" asp-action="Login">
+                                <h6 class="text-theme">Please login to continue</h6>
+                                <label class="text-theme">Starts March 1</label>
+                            </a>
+                         }
+                    }
+                </div>
+                <h6 class="text-white ml-4 pt-4">
+                    <i class='bx bxs-user'></i>
+                    <b class="text-primary">24,118</b> already enrolled</h6>
+            </div>
+            <div class="col-md-6 col-lg-6 mb-4">
+                <div class="bird-intro border-0">
+                    <div class="card-body rounded-bottom text-center ml-5">
+                        <img class="img-fluid" src="~/img/avatars/birdEdu.png" alt=""
+                        style="width: 80%;">
+                    </div>
+                    <h6 class="text-white text-center">Powered by <b class="text-primary">W3COURSES</b></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Welcome End -->
+
+<!-- Nav Course Intro Start -->
+<div class="container">
+    <nav class="navba navbar-expand-sm navbar-light p-3">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item mr-3 h5 text-theme">
+                    <a class="nav-link" href="#introduction">Introduction</a>
+                </li>
+                <li class="nav-item mr-3 h5 text-theme">
+                    <a class="nav-link" href="#syllabus">Syllabus</a>
+                </li>
+                <li class="nav-item mr-3 h5 text-theme">
+                    <a class="nav-link" href="#feedback">Feedback</a>
+                </li>
+                <li class="nav-item mr-3 h5 text-theme">
+                    <a class="nav-link" href="#">Certificate</a>
+                </li>
+            </ul>
+        </div>
+        </nav>
+</div>
+<!-- Nav Course Intro End -->
+
+<!-- Courses Start -->
+<div class="container-fluid">
+    <div id="introduction" class="container mt-3">
+        <h2 class="text-dark">What you'll learn</h2>
+            <div class="col-lg-12 col-md-12 mb-4">
+                <label>@Model.Item1.Description</label>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <img class="img-fluid" src="~/img/avatars/course/course-2.jpg" alt="">
+            </div>
+            <div id="syllabus" class="col-lg-12 col-md-12 mb-4 mt-5">
+                <h2>Syllabus - What you will learn from this learn</h2>
+            </div>
+            <div class="col-lg-12 col-md-12 mb-4">
+                <h5 class="text-dark ml-4">@Model.Item1.CourseName</h5>
+                <p class="mt-3">
+                    <i class='bx bx-book-open ml-4 mr-2'></i>
+                    <b>10</b> chapters, <b>20</b> lesson, duration <b>05 hours 02 minutes</b>
+                </p>
+            </div>
+
+            <!-- List of Chapter Start-->
+            <div class="col-lg-12 col-md-12">
+                <div class="box-chaper mb-2" data-bs-toggle="collapse" data-bs-target="#list-lesson">
+                    <div class="chapter-list d-flex">
+                        <div class="chapter-item d-flex">
+                            <i class='bx bx-plus text-primary mr-1 mt-3 ml-3'></i>
+                            <h5 class="pt-3 text-theme"><b>1. Introduction</b></h5>
+                        </div>
+                        <p class="quanity-lesson text-end mr-4"><b>1</b> lesson</p>
+                    </div>
+                </div>
+            </div>
+            <div id="list-lesson" class="collapse">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="box-chaper mb-2">
+                                <div class=" d-flex">
+                                    <div class="lesson-item d-flex ml-4">
+                                        <i class='text-primary bx bxs-caret-right-circle mr-1 mt-3 ml-3'></i>
+                                        <h6 class="pt-3">1. Introduction of HTML</h6>
+                                    </div>
+                                    <p class="quanity-lesson text-end mr-4">20:57</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- List of Chapter End-->
+
+            <!-- List of Chapter Start-->
+            <div class="col-lg-12 col-md-12">
+                <div class="box-chaper mb-2" data-bs-toggle="collapse" data-bs-target="#list-lesson1">
+                    <div class="chapter-list d-flex">
+                        <div class="chapter-item d-flex">
+                            <i class='bx bx-plus text-primary mr-1 mt-3 ml-3'></i>
+                            <h5 class="pt-3"><b>2. Windows Terminal & WSL</b></h5>
+                        </div>
+                        <p class="quanity-lesson text-end mr-4"><b>3</b> lesson</p>
+                    </div>
+                </div>
+            </div>
+            <div id="list-lesson1" class="collapse">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="box-chaper mb-2">
+                                <div class=" d-flex">
+                                    <div class="lesson-item d-flex ml-4">
+                                        <i class='text-primary bx bxs-caret-right-circle mr-1 mt-3 ml-3'></i>
+                                        <h6 class="pt-3">2. Setting enviroment HTML</h6>
+                                    </div>
+                                    <p class="quanity-lesson text-end mr-4">12:23</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="box-chaper mb-2">
+                                <div class=" d-flex">
+                                    <div class="lesson-item d-flex ml-4">
+                                        <i class='text-primary bx bxs-caret-right-circle mr-1 mt-3 ml-3'></i>
+                                        <h6 class="pt-3">3. Setting enviroment HTML</h6>
+                                    </div>
+                                    <p class="quanity-lesson text-end mr-4">12:23</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="box-chaper mb-2">
+                                <div class=" d-flex">
+                                    <div class="lesson-item d-flex ml-4">
+                                        <i class='text-primary bx bxs-caret-right-circle mr-1 mt-3 ml-3'></i>
+                                        <h6 class="pt-3">4. Setting enviroment HTML</h6>
+                                    </div>
+                                    <p class="quanity-lesson text-end mr-4">12:23</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="box-chaper mb-2">
+                                <div class=" d-flex">
+                                    <div class="lesson-item d-flex ml-4">
+                                        <i class='text-primary bx bxs-caret-right-circle mr-1 mt-3 ml-3'></i>
+                                        <h6 class="pt-3">5. Setting enviroment HTML</h6>
+                                    </div>
+                                    <p class="quanity-lesson text-end mr-4">12:23</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- List of Chapter End-->
+
+            <div class="col-lg-12 col-md-12 mt-5">
+                <h3>Requirement</h3>
+                <ul class="list-unstyled ml-3">
+                    <li>
+                        <i class='text-primary bx bx-check'></i>
+                        Ensure a stable internet connection for a good learning experience.
+                    </li>
+                    <li>
+                        <i class='text-primary bx bx-check'></i>
+                        High awareness, and high responsibility in self-study.
+                    </li>
+                    <li>
+                        <i class='text-primary bx bx-check'></i>
+                        Actively participate in Q&A when encountering unclear issues.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Courses End -->
+
+<div class="feedback-container container-fluid text-white py-5 px-sm-3 px-lg-5">
+    <div class="row ml-5">
+        <div id="feedback" class="col-lg-4 col-md-12">
+            <h2 class="text-theme ml-5 mb-4">Feedback</h2>
+            <div class="star-container ml-5">
+                <div class="star-feedback d-flex ml-5">
+                    <h1 class="text-theme mr-4">4</h1>
+                    <div class="star-total">
+                        <div class="start-item mr-2">
+                            <i class="mr-1 bx bxs-star text-warning"></i>
+                            <i class="mr-1 bx bxs-star text-warning"></i>
+                            <i class="mr-1 bx bxs-star text-warning"></i>
+                            <i class="mr-1 bx bxs-star text-warning"></i>
+                            <i class="mr-1 bx bxs-star text-white"></i>
+                        </div>
+                        <label class="text-theme">198 feedback</label>
+                    </div>
+                </div>
+                <div class="star-feedback d-flex ml-5">
+                    <label class="mt-1 mr-2 text-theme">5</label>
+                    <div class="start-item mr-2">
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                    </div>
+                    <label class="mt-1 text-theme">10%</label>
+                </div>
+                <div class="star-feedback d-flex ml-5">
+                    <label class="mt-1 mr-2 text-theme">4</label>
+                    <div class="start-item mr-2">
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-white"></i>
+                    </div>
+                    <label class="mt-1 text-theme">10%</label>
+                </div>
+                <div class="star-feedback d-flex ml-5">
+                    <label class="mt-1 mr-2 text-theme">3</label>
+                    <div class="start-item mr-2">
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-white"></i>
+                        <i class="mr-1 bx bxs-star text-white"></i>
+                    </div>
+                    <label class="mt-1 text-theme">10%</label>
+                </div>
+                <div class="star-feedback d-flex ml-5">
+                    <label class="mt-1 mr-2 text-theme">2</label>
+                    <div class="start-item mr-2">
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-white"></i>
+                        <i class="mr-1 bx bxs-star text-white"></i>
+                        <i class="mr-1 bx bxs-star text-white"></i>
+                    </div>
+                    <label class="mt-1 text-theme">10%</label>
+                </div>
+                <div class="star-feedback d-flex ml-5">
+                    <label class="mt-1 mr-2 text-theme">1</label>
+                    <div class="start-item mr-2">
+                        <i class="mr-1 bx bxs-star text-warning"></i>
+                        <i class="mr-1 bx bxs-star text-white"></i>
+                        <i class="mr-1 bx bxs-star text-white"></i>
+                        <i class="mr-1 bx bxs-star text-white"></i>
+                        <i class="mr-1 bx bxs-star text-white"></i>
+                    </div>
+                    <label class="mt-1 text-theme">10%</label>
+                </div>
+                @{
+                     @* var myCookieValue = Context.Request.Cookies["MyCookie"]; *@
+                    if(myCookieValue != null){
+                    <div class="star-feedback star-post">
+                            <div class="star-item mr-2 mb-2 ml-5 mt-2">
+                                <i class="bx bxs-star text-white"></i>
+                                <i class="bx bxs-star text-white"></i>
+                                <i class="bx bxs-star text-white"></i>
+                                <i class="bx bxs-star text-white"></i>
+                                <i class="bx bxs-star text-white"></i>
+                            </div>
+                        <div class="feedback-post">
+                            <form action="@Url.Action("Create", "Review")" method="post">
+                                <input type="hidden" name="CourseId" value="@Model.Item1.CourseId" />
+                                <input type="hidden" name="LearnerID" value="3" />
+                                <textarea name="Comment" rows="3" cols="40" class="outline-0 ml-3 mt-2" placeholder="Enter your feedback here"></textarea><br>
+                                <button class="btn btn-success float-right mr-5" type="submit">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-12">
+            <h2 class="text-theme ml-5 mb-4">INTERACTIVE USER EXPERIENCE EVALUATIONS</h2>
+            <ul class="feedback-list ml-5 list-unstyled">
+                @{
+                    int count = 0;
+                    foreach(var review in Model.Item3){
+                        if(review.CourseId == Model.Item1.CourseId){
+                            if(count < 2){
+                                <li class="feedback-item">
+                                    <div class="star-feedback">
+                                        @{
+                                            int star = @review.Rating;
+                                            switch(star){
+                                                case 1:
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    break;
+                                                case 2:
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    break;
+                                                case 3:
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    break;
+                                                case 4:
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    break;
+                                                case 5:
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    <i class="mr-1 bx bxs-star text-warning"></i>
+                                                    break;
+                                                default:
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    <i class="mr-1 bx bx-star text-white"></i>
+                                                    break;
+                                            }
+                                        }
+                                    </div>
+                                    <div class="feedback-info d-flex text-theme">
+                                        <div class="feedback-cotent">
+                                            @{
+                                                foreach(var learner in Model.Item4){
+                                                    if(review.LearnerId == learner.LearnerId){
+                                                        <small>@learner.FirstName @learner.LastName</small>
+                                                    }
+                                                }
+                                            }
+                                            <p>@review.Comment</p>
+                                        </div>
+                                        <small class="mt-2 ml-2">@review.ReviewDate</small>
+                                    </div>
+                                    <hr>
+                                </li>
+                                count++;
+                            }else{
+                                <li id="more" class="collapse feedback-item">
+                                    <div class="star-feedback">
+                                        <i class="mr-1 bx bxs-star text-warning"></i>
+                                        <i class="mr-1 bx bxs-star text-warning"></i>
+                                        <i class="mr-1 bx bxs-star text-warning"></i>
+                                        <i class="mr-1 bx bxs-star text-warning"></i>
+                                        <i class="mr-1 bx bxs-star text-warning"></i>
+                                    </div>
+                                    <div class="feedback-info d-flex text-theme">
+                                        <div class="feedback-cotent">
+                                            @{
+                                                foreach(var learner in Model.Item4){
+                                                    if(review.LearnerId == learner.LearnerId){
+                                                        <small>@learner.FirstName @learner.LastName</small>
+                                                    }
+                                                }
+                                            }
+                                            <p>@review.Comment</p>
+                                        </div>
+                                        <small class="mt-2 ml-2">@review.ReviewDate</small>
+                                    </div>
+                                    <hr>
+                                </li>
+                            }
+                        }
+                    }
+                }
+            </ul>
+            <div class="more-course mb-4 mt-4 ml-5">
+                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#more"
+                onclick="toggleButtonText(this)">See more</button>
+            </div>
+        </div>
+    </div>
+</div>

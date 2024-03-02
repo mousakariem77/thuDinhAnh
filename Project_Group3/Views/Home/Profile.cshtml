@@ -1,0 +1,219 @@
+@model WebLibrary.Models.Instructor
+@{
+    ViewData["Title"] = "Infomation";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/js/site.js" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container py-5">
+    <div class="mb-2">
+        <h6 class="text-primary mb-3">
+            <a href="home.html">Home</a> >
+            <a href="profile.html">My profile</a>
+        </h6>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-lg-3">
+            <div class="contact-form rounded p-5" style="background-color: #F3F4F6">
+                <ul class="navbar-nav list-unstyled" style="margin-top: -30px;">
+                    <li class="nav-item pt-2">
+                        <a class="nav-link text-theme" onclick="showContent('information')">Information</a>
+                    </li>
+                    <li class="nav-item pt-2">
+                        <a class="nav-link text-theme" onclick="showContent('changePassword')">Change Password</a>
+                    </li>
+                    <li class="nav-item pt-2">
+                        <a class="nav-link text-theme" onclick="showContent('viewCourses')">View all my course</a>
+                    </li>
+                    <li class="nav-item pt-2">
+                        <a class="nav-link text-theme" onclick="showContent('transaction')">Transaction</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="information" class="information col-md-9 col-lg-9">
+            <div class="contact-form rounded p-5" style="background-color: #F3F4F6">
+                <h4 class="text-dark" style="margin-top: -20px;">Information</h4>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3">
+                            <div class="team-item">
+                                <div class="team-img">
+                                    <img class="img-fluid rounded-circle" src="~/img/1.png" alt="">
+                                </div>
+                                <button class="btn btn-primary mt-3 ml-3 d-none ">Select photo</button>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-lg-9">
+                            <div class="container mt-2">
+                                <div class="row">
+                                    <div class="info-title col-md-4 col-lg-4 text-dark">
+                                        <label>Full name: <i class="text-danger">*</i></label><br>
+                                        <label>Gender: </label><br>
+                                        <label>Birthday: </label><br>
+                                        <label>Phone number: <i class="text-danger">*</i></label><br>
+                                        <label>Email address: <i class="text-danger">*</i></label><br>
+                                        <label>Country/Region: <i class="text-danger">*</i></label><br>
+                                    </div>
+                                    <div class="info-title col-md-8 col-lg-8 text-dark">
+                                        <div class="d-flex" style="justify-content: space-between;">
+                                            <label>@Model.FirstName @Model.LastName</label>
+                                            <a class="btn mr-2 cursor-pointer" data-bs-toggle="modal" data-bs-target="#edit" title="Edit">
+                                                <i class='bx bxs-pencil text-primary'></i><br>
+                                            </a>
+                                        </div>
+                                        <label>@Model.Gender</label><br>
+                                        <label>@Model.Birthday.Value.ToShortDateString()</label><br>
+                                        <label>@Model.PhoneNumber</label><br>
+                                        <label>@Model.Email</label><br>
+                                        <label>@Model.Country</label><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="text-dark mt-5 mb-4">Learning outcomes</h4>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="rounded overflow-hidden mb-2 border">
+                                <img class="img-fluid" src="~/img/avatars/course/course-1.jpg" alt="">
+                                <div class="p-4">
+                                    <a class="h6" href="course-intro.html">Web design & development courses for beginner</a>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <h6 class="m-0"><i class="fa fa-star text-warning mr-2"></i>4.5</h6>
+                                        <div class="progess-info"><label>10%</label></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="rounded overflow-hidden mb-2 border">
+                                <img class="img-fluid" src="~/img/avatars/course/course-1.jpg" alt="">
+                                <div class=" p-4" style="background-color: #F3F4F6">
+                                    <a class="h6" href="course-intro.html">Web design & development courses for beginner</a>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <h6 class="m-0"><i class="fa fa-star text-warning mr-2"></i>4.5</h6>
+                                        <div class="progess-info"><label>10%</label></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="rounded overflow-hidden mb-2 border">
+                                <img class="img-fluid" src="~/img/avatars/course/course-1.jpg" alt="">
+                                <div class=" p-4" style="background-color: #F3F4F6">
+                                    <a class="h6" href="course-intro.html">Web design & development courses for beginner</a>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <h6 class="m-0"><i class="fa fa-star text-warning mr-2"></i>4.5</h6>
+                                        <div class="progess-info"><label>10%</label></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Change Password -->
+        <div id="changePassword" class="changepass col-md-9 col-lg-9" style="display: none;">
+            <div class="contact-form rounded p-5" style="background-color: #F3F4F6">
+                <h4 class="text-dark" style="margin-top: -20px;">Change password</h4>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-9">
+                            <div class="container mt-3">
+                                <div class="row">
+                                    <div class=" col-md-12 col-lg-12 text-dark">
+                                        <form action="" method="">
+                                            <label class="mt-2">Password:</label><br>
+                                            <input type="password" class="form-control" placeholder="Password">
+                                            <label class="mt-4">New Password:</label><br>
+                                            <input type="password" class="form-control" placeholder="New Password">
+                                            <label class="mt-4">Confirm Password:</label><br>
+                                            <input type="password" class="form-control" placeholder="Confirm Password">
+                                            <button class="btn btn-primary mt-3 float-right" type="submit">Change</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- view all my Courses -->
+    </div>
+</div>
+<!-- Information End -->
+
+<!-- Modal -->
+<div class="modal fade mt-5" id="edit" tabindex="-1" aria-labelledby="enrollLabel" aria-hidden="true" style="width: 100rem;">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="enrollLabel">Edit infomation</h5>
+            <button type="button" class="btn-close bg-theme text-theme border-0" data-bs-dismiss="modal" aria-label="Close">x</button>
+        </div>
+        <div class="modal-body">
+            <form asp-action="Edit" class="mb-3" enctype="multipart/form-data">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-start align-items-sm-center">
+                        <div class="avatar-user mr-2 mb-3">
+                            <img class="avatar-initial rounded-circle bg-label-warning" src="~/img/1.png">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="FirstName" class="text-theme font-weight-bold">First Name</label>
+                                <input asp-for="FirstName" class="form-control" style="width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="LastName" class="text-theme font-weight-bold">Last Name</label>
+                                <input asp-for="LastName" class="form-control" style="width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="Gender" class="text-theme font-weight-bold">Gender</label>
+                                <input asp-for="Gender" class="form-control" style="width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="Country" class="text-theme font-weight-bold">Country</label>
+                                <input asp-for="Country" class="form-control" style="width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="PhoneNumber" class="text-theme font-weight-bold">Phone Number</label>
+                                <input asp-for="PhoneNumber" class="form-control" style="width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="Birthday" class="text-theme font-weight-bold">Birthday</label>
+                                <input value="@Model.Birthday.Value.ToShortDateString()" asp-format="{0:dd-MM-yyyy}" class="form-control" style="width: 100%;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a asp-action="Index" class="btn btn-secondary mt-2 float-right">Cancel</a>
+                <button type="submit" class="btn btn-success mr-3 mt-2 float-right">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->

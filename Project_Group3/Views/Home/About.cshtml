@@ -1,0 +1,166 @@
+@model IEnumerable<WebLibrary.Models.Instructor>;
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/fonts/boxicons.css" />
+
+<div class="container-fluid addvertising-course">
+    <!-- About Start -->
+        <div class="container-fluid mt-5">
+            <div class="container py-5">
+                <div class="row align-items-center about-img">
+                    <div class="col-lg-5">
+                        <img class="img-fluid rounded mb-4 mb-lg-0" src="~/img/avatars/birdEdu.png" alt="">
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="text-left mb-4">
+                            <h2 class="text-primary text-uppercase mb-3" style="letter-spacing: 2px;">About Us</h2>
+                            <h1>Innovative Way To Learn</h1>
+                        </div>
+                        <p class="text-dark" style="font-size: 1.3rem">We are a passionate team with enthusiasm and a desire to share knowledge. In an increasingly
+                            evolving and diverse world, we believe that online learning is the key to opening the door 
+                            for everyone to access new knowledge and skills. Our website was built with the mission of 
+                            conveying knowledge in an easy-to-understand, flexible and interesting way. Here, we are 
+                            committed to providing a great learning experience and bringing the latest knowledge to the 
+                            learning community.</p>
+                        <!-- <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+        <!-- Values Start -->
+        <div class="value-container container-fluid mt-5" style="background-color: rgb(12, 65, 93);">
+            <div class="container py-5">
+                <h2 class="text-primary text-uppercase text-center mb-4">Values</h2>
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 mb-4">
+                        <div class="team-item mb-2">
+                            <div class="bg-theme p-4 d-flex">
+                                <div class="value-icon">
+                                    <i class='bx bxs-book-reader text-info' ></i>
+                                </div>
+                                <div class="value-info">
+                                    <h5>Diverse Courses</h5>
+                                    <p class="m-0">The site offers a variety of training content. 
+                                        This diversity helps meet everyone's learning needs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 team mb-4">
+                        <div class="team-item mb-2">
+                            <div class="bg-theme p-4 d-flex">
+                                <div class="value-icon">
+                                    <i class='bx bxs-graduation text-warning'></i>
+                                </div>
+                                <div class="value-info">
+                                    <h5>Quality Education</h5>
+                                    <p class="m-0">Content is updated regularly 
+                                        to ensure learners acquire the latest knowledge 
+                                        and apply it in practice.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 team mb-4">
+                        <div class="team-item mb-2">
+                            <div class="bg-theme p-4 d-flex">
+                                <div class="value-icon">
+                                    <i class='bx bx-time-five text-danger'></i> 
+                                </div>
+                                <div class="value-info">
+                                    <h5>Flexible</h5>
+                                    <p class="m-0">Allows learners to learn 
+                                        flexibly in time and location and from 
+                                        any device with an internet connection.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 team mb-4">
+                        <div class="team-item mb-2">
+                            <div class="bg-theme p-4 d-flex">
+                                <div class="value-icon">
+                                    <i class='bx bxs-group text-success' ></i> 
+                                </div>
+                                <div class="value-info">
+                                    <h5>Interaction and Support</h5>
+                                    <p class="m-0">Learners also have the opportunity 
+                                        to interact with teachers and the learner community.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Values End -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 text-center team mb-4">
+                    <div class="team-item rounded overflow-hidden mb-2">
+                        <div class="team-img position-relative mt-4">
+                            <img class="img-fluid img-equal-size " src="~/img/DinhAnh.jpg" alt="">
+                        </div>
+                        <div class="text-them p-4">
+                            <h5>Doan Dinh Anh</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center team mb-4">
+                    <div class="team-item rounded overflow-hidden mb-2">
+                        <div class="team-img position-relative mt-4">
+                            <img class="img-fluid img-equal-size" src="~/img/KaRiem.jpg" alt="">
+                        </div>
+                        <div class="text-them p-4">
+                            <h5>Mou Sa Ka Riem</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center team mb-4">
+                    <div class="team-item rounded overflow-hidden mb-2">
+                        <div class="team-img position-relative mt-4">
+                            <img class="img-fluid img-equal-size" src="~/img/NguyenBao.jpg" alt="">
+                        </div>
+                        <div class="text-them p-4">
+                            <h5>Huynh Nguyen Bao</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center team mb-4">
+                    <div class="team-item rounded overflow-hidden mb-2">
+                        <div class="team-img position-relative mt-4">
+                            <img class="img-fluid img-equal-size" src="~/img/HongLinh.jpg" alt="">
+                        </div>
+                        <div class="text-them p-4">
+                            <h5>Tran Hong Linh</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center team mb-4">
+                    <div class="team-item rounded overflow-hidden mb-2">
+                        <div class="team-img position-relative mt-4">
+                            <img class="img-fluid img-equal-size" src="~/img/HaiHuy.jpg" alt="">
+                        </div>
+                        <div class="text-them p-4">
+                            <h5>Le Vo Hai Huy</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Welcome Start -->
+        <div class="container-fluid mt-5">
+            <div class="container py-5">
+                <h3 class="text-primary text-uppercase text-center" style="letter-spacing: 5px;">WELCOME TO OUR COURSES
+                <h5 class="text-dark text-uppercase text-center py-2">the place where you can explore, learn, and develop yourself through a diverse range of online courses🤓
+            </div>
+        </div>
+        <!-- Welcome End -->  
+</div>

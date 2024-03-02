@@ -1,0 +1,33 @@
+@model WebLibrary.Models.Admin
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card rounded-lg shadow" style="width: 400px;">
+        <div class="card-body">
+            <h2 class="card-title text-center">Login</h2>
+            <form asp-action="Login" method="post">
+                <div class="mb-3">
+                    <label asp-for="Username" class="form-label">Username:</label>
+                    <input type="text" class="form-control" id="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="pass" name="pass">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            @if (!string.IsNullOrEmpty(ViewBag.Message))
+            {
+                <div class="alert alert-info mt-3" role="alert">
+                    @ViewBag.Message
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
